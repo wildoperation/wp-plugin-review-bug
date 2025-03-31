@@ -1,6 +1,6 @@
 <?php
 /**
- * Version 1.1.4
+ * Version 1.1.5
  *
  * Update Namespace to avoid plugin conflicts.
  *
@@ -113,7 +113,7 @@ class WPPluginReviewBug {
 			/**
 			 * Hooks
 			 */
-			add_action( 'init', array( $this, 'check' ), 20 );
+			add_action( 'admin_init', array( $this, 'check' ), 20 );
 		}
 	}
 
