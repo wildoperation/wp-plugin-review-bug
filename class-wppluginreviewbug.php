@@ -1,6 +1,6 @@
 <?php
 /**
- * Version 1.1.5
+ * Version 1.1.6
  *
  * Update Namespace to avoid plugin conflicts.
  *
@@ -236,8 +236,15 @@ class WPPluginReviewBug {
 				<a id="<?php echo esc_attr( $this->prefix ); ?>-rate-<?php echo esc_attr( $this->slug ); ?>" href="<?php echo esc_url( $this->review_url ); ?>" target="_blank" rel="noopener noreferrer" class="<?php echo esc_attr( $this->prefix ); ?>-rate <?php echo esc_attr( $this->prefix ); ?>-action button button-primary">
 					<?php echo esc_html( $this->messages['rate_link_text'] ); ?>
 				</a>
-				<?php if ( $showhelp ) : ?>
-				<a id="<?php echo esc_attr( $this->prefix ); ?>-help-<?php echo esc_attr( $this->slug ); ?>" href="<?php echo esc_url( $this->need_help_url ); ?>" class="<?php echo esc_attr( $this->prefix ); ?>-help button button-secondary" target="_blank" rel="noopener noreferrer">
+				<?php
+				if ( $showhelp ) :
+					if ( stripos( $this->need_help_url, site_url() ) !== false ) {
+						$target = '';
+					} else {
+						$target = ' target="_blank" rel="noopener noreferrer"';
+					}
+					?>
+				<a id="<?php echo esc_attr( $this->prefix ); ?>-help-<?php echo esc_attr( $this->slug ); ?>" href="<?php echo esc_url( $this->need_help_url ); ?>" class="<?php echo esc_attr( $this->prefix ); ?>-help button button-secondary"<?php echo $target; ?>>
 					<?php echo esc_html( $this->messages['need_help_text'] ); ?>
 				</a>
 				<?php endif; ?>
